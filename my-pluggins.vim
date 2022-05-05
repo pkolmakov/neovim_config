@@ -119,6 +119,11 @@ Plug 'itchyny/lightline.vim'
 " Linting/error highlighting
 " Removed ale temporary
 Plug 'dense-analysis/ale'
+"Required for nuget
+Plug 'mattn/webapi-vim'
+Plug 'Shougo/deoplete.nvim'
+"end required for nuget
+Plug 'markwoodhall/vim-nuget'
 " Snippet support
 if s:using_snippets
   Plug 'sirver/ultisnips'
@@ -158,6 +163,24 @@ Plug 'othree/html5.vim'
 Plug 'kshenoy/vim-signature'
 "Plug 'turbio/bracey.vim'
 "Plug 'cosminadrianpopescu/vim-sql-workbench'
+"JAVA
+"Plug 'natebosch/vim-lsc'
+"Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
+
+Plug 'prabirshrestha/vim-lsp'
+Plug 'mattn/vim-lsp-settings'
+
+Plug 'mfussengger/nvim-jdtls'
+
+"lua << EOF
+"    require'nvim-treesitter.configs'.setup {
+"        ensure_installed = "maintained",
+"        highlight = {
+"            enable = true,
+"            },
+"        }
+"EOF
+
 call plug#end()
 
 "let g:vimspector_enable_mappings = 'HUMAN'
