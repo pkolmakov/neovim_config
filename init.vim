@@ -2,11 +2,13 @@
 "my configuration that is similar to Rider (IDE) that I use for developing
 "
     let g:python_host_prog  = 'C:\Python27\python'
-    let g:python3_host_prog = 'C:\Python38\python'
+    let g:python3_host_prog = 'C:\Python310\python'
 
     source ~/AppData/local/nvim/general-settings.vim
     source ~/AppData/local/nvim/my-pluggins.vim
     source ~/AppData/local/nvim/my-dotnet-configuration.vim
+    source ~/AppData/Local/nvim/intelephense.vim
+    source ~/AppData/Local/nvim/workingDirrectory.vim
 
 augroup java_commands
   autocmd!

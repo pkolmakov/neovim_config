@@ -90,6 +90,9 @@ nnoremap <leader>rnd :.,$s/
 nnoremap <leader>rnu :.,0s/
 nnoremap <leader>rn :%s//
 
+
+nnoremap <leader>q :bd<cr>
+
 "let g:sql_type_default = "sql"
 
 " It solves problem with white bg for autocomplete popup

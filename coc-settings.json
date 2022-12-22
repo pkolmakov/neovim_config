@@ -1,4 +1,5 @@
 {
     "java.trace.server": "verbose",
-    "java.home":"C:/Program Files/Java/jdk-18.0.1.1"
+    "java.home":"C:/Program Files/Java/jdk-18.0.1.1",
+    "intelephense.licenceKey":"006WCBO15NIL8UK"
 }

@@ -2,7 +2,7 @@
 let s:using_snippets = 0
 " I set the path because I have account name on Russian but here
 " we shoul past path like '~/AppData/Local/nvim/plugged'
-call plug#begin('D:\Neovim\plugged')
+call plug#begin('~/AppData/Local/nvim/plugged')
 " NERDTree
  Plug 'preservim/nerdtree'
  Plug 'Xuyuanp/nerdtree-git-plugin'
@@ -12,7 +12,7 @@ call plug#begin('D:\Neovim\plugged')
  Plug 'airblade/vim-gitgutter'
  Plug 'ctrlpvim/ctrlp.vim'
 
- Plug 'frazrepo/vim-rainbow'
+"Plug 'frazrepo/vim-rainbow'
  Plug 'nathanaelkane/vim-indent-guides'
 
  " Better display unwanted whitespace.
@@ -27,7 +27,7 @@ call plug#begin('D:\Neovim\plugged')
 
  Plug 'morhetz/gruvbox'
 
- Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+ Plug 'junegunn/fzf', {'dir': '~/.fzf','do': './install --all'}
  Plug 'junegunn/fzf.vim'
  Plug 'airblade/vim-rooter'
  "Plug 'stsewd/fzf-checkout.vim'
@@ -84,7 +84,9 @@ call plug#begin('D:\Neovim\plugged')
  "-------Javascript plugins
 Plug 'neoclide/coc.nvim', {'do': 'yarn install --frozen-lockfile', 'branch':'release'} " this is for auto complete, prettier and tslinting
 
-let g:coc_global_extensions = ['coc-tslint-plugin', 'coc-tsserver', 'coc-css', 'coc-html', 'coc-json', 'coc-prettier', 'coc-db','coc-fzf-preview','coc-snippets','coc-omnisharp']  " list of CoC extensions needed 
+let g:coc_global_extensions = ['coc-tslint-plugin', 'coc-tsserver', 'coc-css', 'coc-html', 'coc-json', 'coc-prettier', 'coc-db','coc-fzf-preview','coc-snippets','coc-omnisharp','coc-phpls']  " list of CoC extensions needed 
+
+Plug 'antoinemadec/coc-fzf'
 
 Plug 'jiangmiao/auto-pairs' "this will auto close ( [ {
 
@@ -111,7 +113,7 @@ Plug 'othree/yajs.vim'
 "------C#
 Plug 'OmniSharp/omnisharp-vim'
 "for debugging
-Plug 'puremourning/vimspector'
+"Plug 'puremourning/vimspector'
 " Mappings, code-actions available flag and statusline integration
 Plug 'nickspoons/vim-sharpenup'
 " works with ale
@@ -170,7 +172,7 @@ Plug 'kshenoy/vim-signature'
 Plug 'prabirshrestha/vim-lsp'
 Plug 'mattn/vim-lsp-settings'
 
-Plug 'mfussengger/nvim-jdtls'
+Plug 'mfussenegger/nvim-jdtls'
 
 "lua << EOF
 "    require'nvim-treesitter.configs'.setup {
@@ -181,6 +183,29 @@ Plug 'mfussengger/nvim-jdtls'
 "        }
 "EOF
 
+Plug 'aklt/plantuml-syntax'
+Plug 'weirongxu/plantuml-previewer.vim'
+Plug 'tyru/open-browser.vim'
+
+Plug 'ekalinin/Dockerfile.vim'
+Plug 'tomasiser/vim-code-dark'
+
+Plug 'vim-vdebug/vdebug'
 call plug#end()
+
+let g:vdebug_options = {
+\ 'break_on_open': 0,
+\ 'path_maps': {
+\   '/var/www/html' : 'C:\users\pkolmakov\Documents\OneInc\Docker\scrm\InsurPay_SuiteCRM\App',
+\   '/var/www/html/index.php' : 'C:\users\pkolmakov\Documents\OneInc\Docker\scrm\InsurPay_SuiteCRM\App\index.php',
+\   '/var/www/html/modules' : 'C:\users\pkolmakov\Documents\OneInc\Docker\scrm\InsurPay_SuiteCRM\App\modules',
+\   '/var/www/html/themes/Suite7/css' : 'C:\users\pkolmakov\Documents\OneInc\Docker\scrm\InsurPay_SuiteCRM\App\themes\Suite7\css'
+\ },
+\ 'port': '9003',
+\ 'watch_window_style': 'expanded',
+\ 'layout':'horizontal',
+\ 'debug_file':'C:\users\pkolmakov\Documents\OneInc\Docker\scrm\InsurPay_SuiteCRM\App\xdebug_custom.log',
+\ 'debug_file_level':'1'
+\ }
 
 "let g:vimspector_enable_mappings = 'HUMAN'
