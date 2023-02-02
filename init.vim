@@ -47,10 +47,11 @@ augroup END
     nnoremap gdl :diffget //3<CR>   
     nnoremap gdp :diffput <CR>  
  
-" nerdtree mapping 
+" nerdtree mapping
 "silent! map <a-1> :NERDTreeFind<cr>  
 "let g:NERDTreeMapQuit="<a-1>"
     nnoremap <silent> <expr> <a-1> g:NERDTree.IsOpen() ? "\:NERDTreeClose<CR>" : bufexists(expand('%')) ? "\:NERDTreeFind<CR>" : "\:NERDTree<CR>"
+    nnoremap gn :NERDTreeToggle<CR>
 
 " tags mapping 
     silent! map <Leader>; :TagbarOpenAutoClose<cr>  
