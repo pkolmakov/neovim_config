@@ -190,7 +190,11 @@ Plug 'tyru/open-browser.vim'
 Plug 'ekalinin/Dockerfile.vim'
 Plug 'tomasiser/vim-code-dark'
 
+# For drawing diagramms (use html files)
+Plug 'craigmac/vim-mermaid'
+
    "Plug 'vim-vdebug/vdebug'
+    
 call plug#end()
 
 let g:vdebug_options = {

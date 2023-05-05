@@ -93,6 +93,30 @@ nnoremap <leader>rn :%s//
 
 nnoremap <leader>q :bd<cr>
 
+" to make currend directory in a new tab if I mention path
+function! OnTabEnter(path)
+  if isdirectory(a:path)
+    let dirname = a:path
+  else
+    let dirname = fnamemodify(a:path, ":h")
+  endif
+  execute "tcd ". dirname
+endfunction()
+
+autocmd TabNewEntered * call OnTabEnter(expand("<amatch>"))
+
+" my mappings where I open ide when I'm on a file
+nmap <silent> <leader>gpf :OpenInIde 'phpstorm'<CR>
+command! -nargs=1 OpenInIde call OpenIde(<args>)
+
+function! OpenIde(ide_type)
+    let path = expand("%:p")
+    let line = line(".")
+    if(a:ide_type == 'phpstorm')
+        execute ':!phpstorm --line '.line.' '.path
+    endif
+endfunction
+
 "let g:sql_type_default = "sql"
 
 " It solves problem with white bg for autocomplete popup

@@ -9,3 +9,15 @@ for coc.nvim because it was stable with my vim
 
 3) to update changes in vim need to type so % command
 
+
+# how to install 
+- unpack into ~/AppData/Local/nvim/
+- do what folder says copy_content_to_c_drive_and_add_to_env_path
+- be sure that you have C:\Program Files\Neovim\bin path in sys env
+
+
+# vimdiff merge tool 
+just run this commands if something wrong:
+
+git config --global mergetool.fugitive.cmd 'nvim -f -c "Gvdiffsplit!" "$MERGED"'
+git config --global merge.tool fugitive
