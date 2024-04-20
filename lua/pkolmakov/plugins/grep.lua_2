@@ -1,0 +1,7 @@
+return{
+    {"BurntSushi/ripgrep"},
+    {'jesseleite/vim-agriculture'},
+    { 'yuki-yano/fzf-preview.vim', branch ='release/rpc' },
+{'antoinemadec/coc-fzf'},
+{ "junegunn/fzf", build = ":call fzf#install()"},
+}
