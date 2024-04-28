@@ -21,12 +21,13 @@ vim.opt.scrolloff=8
 vim.opt.signcolumn='yes'
 vim.opt.isfname:append("@-@")
 vim.opt.colorcolumn='80'
+vim.opt.textwidth = 80
+vim.opt.formatoptions:append('t')
 vim.cmd('highlight ColorColumn ctermbg=0 guibg=lightgrey')
 vim.opt.encoding='utf-8'
 vim.opt.clipboard='unnamedplus'
 vim.opt.foldenable = false
 vim.opt.updatetime = 50
-
 
 vim.g.rainbow_active = 1 
 vim.g.indent_guides_enable_on_vim_startup = 1

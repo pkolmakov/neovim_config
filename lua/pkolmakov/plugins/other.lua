@@ -1,11 +1,10 @@
 return {
 {"nathanaelkane/vim-indent-guides"},
-{'neoclide/coc.nvim',  branch= 'release' },
 {'iamcco/markdown-preview.nvim'},
 {'junegunn/limelight.vim'},
 {"ntpeters/vim-better-whitespace"},
 {"mhinz/vim-signify"},
-{"airblade/vim-rooter"},
+--{"airblade/vim-rooter"},
 --{"kyazdani42/nvim-web-devicons"},
 {"vim-airline/vim-airline"},
 {"tpope/vim-surround"},
@@ -55,4 +54,13 @@ return {
 { "nvim-treesitter/nvim-treesitter-textobjects" },
 {'akinsho/bufferline.nvim', version = "*", dependencies = 'nvim-tree/nvim-web-devicons'},
 {'RRethy/vim-illuminate'},
+{
+  'stevearc/oil.nvim',
+    config = function()
+            require("oil").setup({
+              default_file_explorer = false,
+            })
+        vim.keymap.set("n", "<A-2>", "<CMD>Oil<CR>", { desc = "Open parent directory" })
+    end,
+},
 }

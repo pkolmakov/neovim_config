@@ -3,7 +3,7 @@ return {
   -- optional for icon support
   dependencies = {
         {"nvim-tree/nvim-web-devicons"},
-{ "junegunn/fzf", build = "./install --bin" },
+        { "junegunn/fzf", build = "./install --bin" },
     },
   config = function()
     -- calling `setup` is optional for customization
@@ -18,7 +18,11 @@ return {
 vim.keymap.set("n", "<c-F>",
   "<cmd>lua require('fzf-lua').files()<CR>", { silent = true })
 
-vim.api.nvim_set_keymap("n", "<leader>g", ":FzfLua live_grep_native<CR>", {noremap = true})
+vim.keymap.set("n", "<leader>g",function()
+            require('fzf-lua').live_grep_native({cwd = vim.fn.getcwd()})
+        end, {noremap = true})
+
+--vim.api.nvim_set_keymap("n", "<leader>g", ":FzfLua live_grep_native<CR>", {noremap = true})
 vim.api.nvim_set_keymap("n", "<leader>fg", ":FzfLua git_files<CR>", {noremap = true})
 vim.api.nvim_set_keymap("n", "<leader>gg", ":FzfLua blines<CR>", {noremap = true})
 vim.api.nvim_set_keymap("n", "<leader>c", ":FzfLua commands<CR>", {noremap = true})

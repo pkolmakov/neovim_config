@@ -1,0 +1,94 @@
+vim.cmd [[packadd packer.nvim]]
+return require('packer').startup(function(use)
+	use 'wbthomason/packer.nvim'
+
+use{
+	'nvim-telescope/telescope.nvim',tag ='0.1.6',
+	requires = {
+        {'nvim-lua/plenary.nvim'},
+        {'nvim-telescope/telescope-fzf-native.nvim', build = 'make'},
+        {'nvim-tree/nvim-web-devicons'}
+    }
+}
+
+use { "ellisonleao/gruvbox.nvim"}
+use {"preservim/nerdtree"}
+use {"Xuyuanp/nerdtree-git-plugin"}
+use {"unkiwii/vim-nerdtree-sync"}
+use {"tiagofumo/vim-nerdtree-syntax-highlight"}
+
+use {"airblade/vim-gitgutter"}
+use {"ctrlpvim/ctrlp.vim"}
+
+
+use {"nathanaelkane/vim-indent-guides"}
+
+use {"ntpeters/vim-better-whitespace"}
+
+use {"mhinz/vim-signify"}
+
+
+ use {"airblade/vim-rooter"}
+ use {"kyazdani42/nvim-web-devicons"}
+ use {"tpope/vim-fugitive"}
+ use {"vim-airline/vim-airline"}
+
+ 
+ use {"tpope/vim-surround"}
+ use {"bronson/vim-visual-star-search"}
+ use {"jeetsukumaran/vim-buffergator"}
+ use {"will133/vim-dirdiff"}
+ use {"AndrewRadev/linediff.vim"}
+ use {"vim-scripts/copypath.vim"}
+ use {"matze/vim-move"}
+ use {"mg979/vim-visual-multi"}
+ use {"chrisbra/changesPlugin"}
+ use {"vim-scripts/ViewOutput"}
+ use {"vim-scripts/Quich-Filter"}
+ use {"honza/vim-snippets"}
+ use {"jiangmiao/auto-pairs"}
+ use {"yuezk/vim-js"}
+ use {"HerringtonDarkholme/yats.vim"}
+ use {"maxmellon/vim-jsx-pretty"}
+ use {"rstacruz/vim-closer"}
+ use {"easymotion/vim-easymotion"}
+ use {"chr4/nginx.vim"}
+ use {"othree/javascript-libraries-syntax.vim"}
+ use {"othree/yajs.vim"}
+ use {"nickspoons/vim-sharpenup"}
+ use {"majutsushi/tagbar"}
+ use {"leafgarland/typescript-vim"}
+ use {"mbbill/undotree"}
+ use {"diepm/vim-rest-console"}
+ use {"mattn/emmet-vim"}
+ use {"othree/html5.vim"}
+ use {"kshenoy/vim-signature"}
+ use {"mfussenegger/nvim-jdtls"}
+ use {"aklt/plantuml-syntax"}
+ use {"weirongxu/plantuml-previewer.vim"}
+ use {"tyru/open-browser.vim"}
+ use {"ekalinin/Dockerfile.vim"}
+ use {"tomasiser/vim-code-dark"}
+ use {"craigmac/vim-mermaid"}
+
+ use {"BurntSushi/ripgrep"}
+
+ use ("nvim-treesitter/nvim-treesitter", {run =':TSUpdate'})
+
+use {
+  'VonHeikemen/lsp-zero.nvim',
+  branch = 'v3.x',
+  requires = {
+    --- Uncomment the two plugins below if you want to manage the language servers from neovim
+    -- {'williamboman/mason.nvim'},
+    -- {'williamboman/mason-lspconfig.nvim'},
+
+    {'neovim/nvim-lspconfig'},
+    {'hrsh7th/nvim-cmp'},
+    {'hrsh7th/cmp-nvim-lsp'},
+    {'L3MON4D3/LuaSnip'},
+  }
+}
+
+end)
+

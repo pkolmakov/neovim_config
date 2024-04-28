@@ -5,9 +5,16 @@
     let g:python3_host_prog = 'C:\Python310\python'
 
 " nerdtree mapping
-silent! map <a-1> :NERDTreeFind<cr>  
-let g:NERDTreeMapQuit="<a-1>"
-    nnoremap <silent> <expr> <a-1> g:NERDTree.IsOpen() ? "\:NERDTreeClose<CR>" : bufexists(expand('%')) ? "\:NERDTreeFind<CR>" : "\:NERDTree<CR>"
+"silent! map <a-1> :NERDTreeFind<cr>  
+"let g:NERDTreeMapQuit="<a-1>"
+nnoremap <silent> <expr> <a-1> g:NERDTree.IsOpen() ? "\:NERDTreeClose<CR>" : bufexists(substitute(expand('%'), 'fugitive:\\\(.*\)\\$', '\1', '')) ? "\:NERDTreeFind<CR>" : "\:NERDTree<CR>"
+    "nnoremap <silent> <expr> <a-1> g:NERDTree.IsOpen() ? "\:NERDTreeClose<CR>" : bufexists(substitute(expand('%'), 'fugitive:\\\\(.*)\\.git\\\\$', '\1', '')) ? "\:NERDTreeFind<CR>" : "\:NERDTree<CR>"
+"
+"
+"nnoremap <leader>cp :let @+=substitute(expand('%'), '^fugitive://\\\\', '', '')
+"nnoremap <silent> <expr> <a-1> g:NERDTree.IsOpen() ? "\<Esc>:NERDTreeClose\<CR>" : (bufexists(expand('%')) ? "\<Esc>:NERDTreeFind\<CR>" : "\<Esc>:NERDTree\<CR>")
+
+"nnoremap <silent> <expr> <a-1> g:NERDTree.IsOpen() ? "\<Esc>:NERDTreeClose\<CR>" : (bufexists(expand('%')) ? (try "\<Esc>:NERDTreeFind\<CR>" catch /NERDTree: Can't find / endtry) : "\<Esc>:NERDTree\<CR>")
 nnoremap gn :NERDTreeToggle<CR>
 
 
@@ -15,18 +22,20 @@ nnoremap <leader>rnd :.,$s/
 nnoremap <leader>rnu :.,0s/
 nnoremap <leader>rn :%s//
 
+" to clean up registeres
+command! WipeReg for i in range(34,122) | silent! call setreg(nr2char(i), []) | endfor
 
 " to make currend directory in a new tab if I mention path
-function! OnTabEnter(path)
-  if isdirectory(a:path)
-    let dirname = a:path
-  else
-    let dirname = fnamemodify(a:path, ":h")
-  endif
-  execute "tcd ". dirname
-endfunction()
+"function! OnTabEnter(path)
+"  if isdirectory(a:path)
+"    let dirname = a:path
+"  else
+"    let dirname = fnamemodify(a:path, ":h")
+"  endif
+"  execute "tcd ". dirname
+"endfunction()
 
-autocmd TabNewEntered * call OnTabEnter(expand("<amatch>"))
+"autocmd TabNewEntered * call OnTabEnter(expand("<amatch>"))
 
 
 
@@ -84,3 +93,31 @@ nmap <silent> gd <Plug>(coc-definition)
 nmap <silent> gy <Plug>(coc-type-definition)
 nmap <silent> gi <Plug>(coc-implementation)
 nmap <silent> gr <Plug>(coc-references)
+
+
+
+"set nocompatible
+"set updatetime=300
+"set cmdheight=2
+
+" Use tab for trigger completion with characters ahead and navigate.
+" Insert <tab> when previous text is space, refresh completion if not.
+ inoremap <silent><expr> <TAB>
+       \ coc#pum#visible() ? coc#pum#next(1):
+       \ <SID>check_back_space() ? "\<TAB>" :
+       \ coc#refresh()
+ inoremap <expr><S-TAB> coc#pum#visible() ? coc#pum#prev(1) : "\<C-h>"
+ 
+ function! s:check_back_space() abort
+   let col = col('.') - 1
+   return !col || getline('.')[col - 1]  =~ '\s'
+ endfunction
+ 
+ " Use <c-space> to trigger completion.
+ if has('nvim')
+   inoremap <expr> <silent> <c-space> coc#refresh()
+ else
+   inoremap <expr> <silent> <c-@> coc#refresh()
+ endif
+ 
+ inoremap <expr> <CR> coc#pum#visible() ? coc#_select_confirm() : "\<CR>"
