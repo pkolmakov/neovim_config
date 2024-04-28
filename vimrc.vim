@@ -5,16 +5,7 @@
     let g:python3_host_prog = 'C:\Python310\python'
 
 " nerdtree mapping
-"silent! map <a-1> :NERDTreeFind<cr>  
-"let g:NERDTreeMapQuit="<a-1>"
 nnoremap <silent> <expr> <a-1> g:NERDTree.IsOpen() ? "\:NERDTreeClose<CR>" : bufexists(substitute(expand('%'), 'fugitive:\\\(.*\)\\$', '\1', '')) ? "\:NERDTreeFind<CR>" : "\:NERDTree<CR>"
-    "nnoremap <silent> <expr> <a-1> g:NERDTree.IsOpen() ? "\:NERDTreeClose<CR>" : bufexists(substitute(expand('%'), 'fugitive:\\\\(.*)\\.git\\\\$', '\1', '')) ? "\:NERDTreeFind<CR>" : "\:NERDTree<CR>"
-"
-"
-"nnoremap <leader>cp :let @+=substitute(expand('%'), '^fugitive://\\\\', '', '')
-"nnoremap <silent> <expr> <a-1> g:NERDTree.IsOpen() ? "\<Esc>:NERDTreeClose\<CR>" : (bufexists(expand('%')) ? "\<Esc>:NERDTreeFind\<CR>" : "\<Esc>:NERDTree\<CR>")
-
-"nnoremap <silent> <expr> <a-1> g:NERDTree.IsOpen() ? "\<Esc>:NERDTreeClose\<CR>" : (bufexists(expand('%')) ? (try "\<Esc>:NERDTreeFind\<CR>" catch /NERDTree: Can't find / endtry) : "\<Esc>:NERDTree\<CR>")
 nnoremap gn :NERDTreeToggle<CR>
 
 
@@ -24,19 +15,6 @@ nnoremap <leader>rn :%s//
 
 " to clean up registeres
 command! WipeReg for i in range(34,122) | silent! call setreg(nr2char(i), []) | endfor
-
-" to make currend directory in a new tab if I mention path
-"function! OnTabEnter(path)
-"  if isdirectory(a:path)
-"    let dirname = a:path
-"  else
-"    let dirname = fnamemodify(a:path, ":h")
-"  endif
-"  execute "tcd ". dirname
-"endfunction()
-
-"autocmd TabNewEntered * call OnTabEnter(expand("<amatch>"))
-
 
 
  " fix splitting 
@@ -96,9 +74,6 @@ nmap <silent> gr <Plug>(coc-references)
 
 
 
-"set nocompatible
-"set updatetime=300
-"set cmdheight=2
 
 " Use tab for trigger completion with characters ahead and navigate.
 " Insert <tab> when previous text is space, refresh completion if not.
@@ -121,3 +96,25 @@ nmap <silent> gr <Plug>(coc-references)
  endif
  
  inoremap <expr> <CR> coc#pum#visible() ? coc#_select_confirm() : "\<CR>"
+
+
+
+" my mappings where I open ide when I'm on a file
+nmap <silent> <leader>gpf :OpenInIde 'phpstorm'<CR>
+nmap <silent> <leader>gif :OpenInIde 'intellij'<CR>
+nmap <silent> <leader>gwf :OpenInIde 'webstorm'<CR>
+command! -nargs=1 OpenInIde call OpenIde(<args>)
+
+function! OpenIde(ide_type)
+    let path = expand("%:p")
+    let line = line(".")
+    if(a:ide_type == 'phpstorm')
+        execute ':!phpstorm --line '.line.' '.path
+    endif
+    if(a:ide_type == 'intellij')
+        execute ':!idea --line '.line.' '.path
+    endif
+    if(a:ide_type == 'webstorm')
+        execute ':!webstorm --line '.line.' '.path
+    endif
+endfunction

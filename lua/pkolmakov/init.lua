@@ -31,23 +31,23 @@ vim.cmd([[colorscheme gruvbox]])
 
 
 
--- Define a function to open the IDE
-local function OpenIde(ide_type)
-    local path = vim.fn.expand("%:p")
-    local line = vim.fn.line(".")
-    if ide_type == 'phpstorm' then
-        vim.api.nvim_command("!phpstorm --line " .. line .. " " .. path)
-    elseif ide_type == 'intellij' then
-        vim.api.nvim_command("!idea --line " .. line .. " " .. path)
-    elseif ide_type == 'webstorm' then
-        vim.api.nvim_command("!webstorm --line " .. line .. " " .. path)
-    end
-end
-
--- Define mappings to open the IDE
-vim.api.nvim_set_keymap('n', '<leader>gpf', ':lua OpenIde("phpstorm")<CR>', { silent = true })
-vim.api.nvim_set_keymap('n', '<leader>gif', ':lua OpenIde("intellij")<CR>', { silent = true })
-vim.api.nvim_set_keymap('n', '<leader>gwf', ':lua OpenIde("webstorm")<CR>', { silent = true })
+---- Define a function to open the IDE
+--local function OpenIde(ide_type)
+--    local path = vim.fn.expand("%:p")
+--    local line = vim.fn.line(".")
+--    if ide_type == 'phpstorm' then
+--        vim.api.nvim_command("!phpstorm --line " .. line .. " " .. path)
+--    elseif ide_type == 'intellij' then
+--        vim.api.nvim_command("!idea --line " .. line .. " " .. path)
+--    elseif ide_type == 'webstorm' then
+--        vim.api.nvim_command("!webstorm --line " .. line .. " " .. path)
+--    end
+--end
+--
+---- Define mappings to open the IDE
+--vim.api.nvim_set_keymap('n', '<leader>gpf', ':lua OpenIde("phpstorm")<CR>', { silent = true })
+--vim.api.nvim_set_keymap('n', '<leader>gif', ':lua OpenIde("intellij")<CR>', { silent = true })
+--vim.api.nvim_set_keymap('n', '<leader>gwf', ':lua OpenIde("webstorm")<CR>', { silent = true })
 
 -- "для поиска по содержимому буфера
 -- "как искать - главное вставить искомую строчку в буфер поиска (это слеш)
