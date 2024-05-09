@@ -1,14 +1,3 @@
-function ColorMyPencils(color, background)
-	color = color or "gruvbox"
-    vim.o.background =background or "dark"  				
-    vim.g.gruvbox_contrast_dark= "soft"		
-	vim.cmd.colorscheme(color)
-
-	vim.api.nvim_set_hl(0, "Normal", { bg = "none" })
-	vim.api.nvim_set_hl(0, "NormalFloat", { bg = "none" })
-
-end
-
 return {
     {
         "folke/tokyonight.nvim",
@@ -31,23 +20,4 @@ return {
             })
         end
     },
-
-    {
-        "rose-pine/neovim",
-        name = "rose-pine",
-        config = function()
-            require('rose-pine').setup({
-                disable_background = true,
-                styles = {
-                    italic = false,
-                },
-            })
-
-            vim.cmd("colorscheme rose-pine")
-
-            ColorMyPencils()
-        end
-    },
-
-
 }

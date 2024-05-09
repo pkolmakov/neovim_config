@@ -64,25 +64,29 @@ vim.api.nvim_set_keymap('n', ',f', [[:lua require('filtering').new():add_to_para
 -- to install regrip need to put exe file in the root of neovim
 
 
---vim.api.nvim_set_keymap('n', '<A-1>', [[luaeval(require('my_module').toggle_nerdtree()) ]], { silent = true, expr = true })
+-- nnoremap <silent> <expr> <a-1> g:NERDTree.IsOpen() ? "\:NERDTreeClose<CR>" : bufexists(substitute(expand('%'), 'fugitive:\\\\\\\(.*\)\\.git\\\\$', '\1', '')) ? "\:NERDTreeFind<CR>" : "\:NERDTree\<CR>"
+--vim.api.nvim_set_keymap('n', '<A-1>', '<cmd>lua require("my_module").toggle_nerdtree()', { silent = true, expr = true })
 
+--vim.api.nvim_set_keymap('n', '<A-1>', '<cmd>lua toggle_nerdtree()<CR>', { silent = true, noremap = true })
 -- Define the function to toggle NERDTree
---local M = {}
---function M.toggle_nerdtree()
+--function toggle_nerdtree()
 --    local is_open = vim.g.NERDTree.IsOpen()
 --    if is_open then
 --        vim.cmd('NERDTreeClose')
 --    else
---        local path = string.gsub(vim.fn.expand('%'), 'fugitive:\\\\(.*)\\.git\\\\$', '%1')
---        if vim.fn.bufexists(path) then
+--        if vim.fn.bufexists(vim.fn.expand('%:p:h')) then
 --            vim.cmd('NERDTreeFind')
 --        else
---            vim.cmd('NERDTree')
+--   local path = vim.fn.substitute(vim.fn.expand('%'), 'fugitive:\\\\\\\\(.*)\\.git\\\\$', '\\1', '')
+--            if (path ~='') then
+--                vim.cmd('NERDTreeToggle ' .. path)
+--            else
+--                vim.cmd('NERDTree')
+--            end
 --        end
 --    end
 --end
 
---return M
 
 
 

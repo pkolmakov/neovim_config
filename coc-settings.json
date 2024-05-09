@@ -1,3 +1,9 @@
 {
-  "suggest.noselect": true
+  "suggest.noselect": true,
+  "java.imports.gradle.wrapper.checksums": [
+    {
+      "sha256": "02c6caaa828f8bf6a4a9aedc138f7d94b742b35d8fe966fe8a1b682663ec2302",
+      "allowed": false
+    }
+  ]
 }

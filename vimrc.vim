@@ -1,12 +1,42 @@
 "author: pkolmakov
 "my configuration that is similar to Rider (IDE) that I use for developing
 "
-    let g:python_host_prog  = 'C:\Python27\python'
+"
+"set background=dark
+"let g:gruvbox_contrast_dark='soft'
+"colorscheme gruvbox
+
+let g:python_host_prog  = 'C:\Python27\python'
     let g:python3_host_prog = 'C:\Python310\python'
 
 " nerdtree mapping
-nnoremap <silent> <expr> <a-1> g:NERDTree.IsOpen() ? "\:NERDTreeClose<CR>" : bufexists(substitute(expand('%'), 'fugitive:\\\(.*\)\\$', '\1', '')) ? "\:NERDTreeFind<CR>" : "\:NERDTree<CR>"
+ " nnoremap <silent> <expr> <a-1> g:NERDTree.IsOpen() ? "\:NERDTreeClose<CR>" : bufexists(substitute(expand('%'), 'fugitive:\\\\\\\(.*\)\\.git\\\\$', '\1', '')) ? "\:NERDTreeFind<CR>" : "\:NERDTree\<CR>"
+" nnoremap <silent> <expr> <a-1> g:NERDTree.IsOpen() ? "\:NERDTreeClose<CR>" : bufexists(substitute(expand('%'), 'fugitive:\\\(.*\)\\$', '\1', '')) ? "\:NERDTreeFind " . substitute(expand('%'), '.*\\\C:\\\([^\\]*\\.*\)\\.git\\', 'C:\\\1', '') ."\<CR>" : "\:NERDTree " . substitute(expand('%'), '.*\\\C:\\\([^\\]*\\.*\)\\.git\\', 'C:\\\1', '') ."\<CR>" 
 nnoremap gn :NERDTreeToggle<CR>
+"nnoremap <a-1> :echo bufexists(substitute(expand('%'), 'fugitive:\\\\\\\(.*\)\\.git\\\\$', '\1', ''))<CR>
+nnoremap <a-5> :echo bufexists(expand('%:p:h'))<CR>
+"nnoremap <silent> <expr> <a-1> g:NERDTree.IsOpen() ? "\:NERDTreeClose<CR>" : bufexists(expand('%:p:h')) ? "\:NERDTreeFind<CR>" : "\:NERDTreeToggle substitute(expand('%'), 'fugitive:\\\\\\\(.*\)\\.git\\\\$', '\1', '')<CR>"
+
+
+function! ToggleNerdtree()
+    let is_open = g:NERDTree.IsOpen()
+    if is_open
+        execute 'NERDTreeClose'
+    else
+        if bufexists(substitute(expand('%:p:h'), 'fugitive:\\\\\\\(.*\)\\.git\\\\$', '\1', ''))
+            execute 'NERDTreeFind ' . expand('%')
+        else
+            let path = substitute(expand('%'), 'fugitive:\\\\\\\(.*\)\\.git\\\\$', '\1', '')
+            if path != ''
+                execute 'NERDTreeToggle ' . path
+            else
+                execute 'NERDTree'
+            endif
+        endif
+    endif
+endfunction
+
+nnoremap <silent> <A-1> :call ToggleNerdtree()<CR>
 
 
 nnoremap <leader>rnd :.,$s/
