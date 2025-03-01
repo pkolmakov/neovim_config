@@ -23,7 +23,7 @@ function! ToggleNerdtree()
     if is_open
         execute 'NERDTreeClose'
     else
-        if bufexists(substitute(expand('%:p:h'), 'fugitive:\\\\\\\(.*\)\\.git\\\\$', '\1', ''))
+        if bufexists(substitute(expand('%'), 'fugitive:\\\\\\\(.*\)\\.git\\\\$', '\1', ''))
             execute 'NERDTreeFind ' . expand('%')
         else
             let path = substitute(expand('%'), 'fugitive:\\\\\\\(.*\)\\.git\\\\$', '\1', '')

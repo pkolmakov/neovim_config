@@ -16,6 +16,7 @@ api.nvim_set_keymap("n", "<leader>h", ":wincmd h<CR>", {noremap = true})
 api.nvim_set_keymap("n", "<leader>j", ":wincmd j<CR>", {noremap = true})
 api.nvim_set_keymap("n", "<leader>k", ":wincmd k<CR>", {noremap = true})
 api.nvim_set_keymap("n", "<leader>l", ":wincmd l<CR>", {noremap = true})
+api.nvim_set_keymap("n", "<leader>f", ":wincmd f<CR>", {noremap = true})
 
 api.nvim_set_keymap("n", "<leader>q", ":bd<CR>", {noremap = true})
 

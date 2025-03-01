@@ -28,7 +28,7 @@ return {
 {"chr4/nginx.vim"},
 {"othree/javascript-libraries-syntax.vim"},
 {"othree/yajs.vim"},
-{"nickspoons/vim-sharpenup"},
+--{"nickspoons/vim-sharpenup"}, shows errors when c# 
 {"majutsushi/tagbar"},
 {"leafgarland/typescript-vim"},
 {"mbbill/undotree"},
@@ -43,6 +43,7 @@ return {
 {"ekalinin/Dockerfile.vim"},
 {"tomasiser/vim-code-dark"},
 {"craigmac/vim-mermaid"},
+{"nicwest/vim-http"},
 {
     "nvim-treesitter/nvim-treesitter-context",
     config = function()
@@ -53,7 +54,6 @@ return {
   },
 { "nvim-treesitter/nvim-treesitter-textobjects" },
 {'akinsho/bufferline.nvim', version = "*", dependencies = 'nvim-tree/nvim-web-devicons'},
-{'RRethy/vim-illuminate'},
 {
   'stevearc/oil.nvim',
     config = function()
